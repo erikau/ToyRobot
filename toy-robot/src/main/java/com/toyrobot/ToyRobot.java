@@ -1,4 +1,4 @@
-package com.eriktveitnes.toyrobot;
+package com.toyrobot;
 
 public class ToyRobot {
 

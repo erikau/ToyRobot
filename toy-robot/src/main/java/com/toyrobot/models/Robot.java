@@ -1,4 +1,6 @@
-package com.eriktveitnes.toyrobot.models;
+package com.toyrobot.models;
+
+import static com.google.common.base.Preconditions.checkNotNull;
 
 /**
  * A Robot is a kind of toy that a direction associated with it.
@@ -7,11 +9,6 @@ package com.eriktveitnes.toyrobot.models;
  */
 public class Robot extends Toy {
 
-    public Robot(int xCordinate, int yCordinate, int currentFacingDirection) {
-        super(xCordinate, yCordinate);
-        this.currentFacingDirection = currentFacingDirection;
-    }
-
     /**
      * The current facing direction is represented as an integer of range 0 to 3
      * Where 0 is North
@@ -19,7 +16,20 @@ public class Robot extends Toy {
      *       2 is South
      *       3 is West
      */
-    private int currentFacingDirection;
+    private DirectionEnum currentFacingDirection;
+
+
+    public Robot(int xCoordinate, int yCoordinate, DirectionEnum currentFacingDirection) {
+        super(xCoordinate, yCoordinate);
+
+        checkNotNull(currentFacingDirection, "currentFacingDirection can not be null");
+        this.currentFacingDirection = currentFacingDirection;
+    }
+
+
+    public DirectionEnum getCurrentFacingDirection() {
+        return currentFacingDirection;
+    }
 
     /**
      * To change the current facing direction left is to turn 90 degrees to the left from the
@@ -54,7 +64,7 @@ public class Robot extends Toy {
      */
     public String reportLocation(){
         //TODO use a string formatter
-        return  xCoordinate + "," + yCoordinate + "," +currentFacingDirection;
+        return  xCoordinate + "," + yCoordinate + "," + currentFacingDirection;
     }
 
 }

@@ -1,4 +1,4 @@
-package com.eriktveitnes.toyrobot.models;
+package com.toyrobot.models;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -31,8 +31,8 @@ public class Table {
     /**
      * Default values
      */
-    private static final int DEFAULT_TABLE_LENGTH = 5;
-    private static final int DEFAULT_TABLE_WIDTH = 5;
+    protected static final int DEFAULT_TABLE_LENGTH = 5;
+    protected static final int DEFAULT_TABLE_WIDTH = 5;
 
     /**
      * Default constructor
@@ -45,15 +45,22 @@ public class Table {
 
     /**
      * The place command to initialise a new Toy and place it on the table.
+     *
+     * If an existing robot is already on the table, it should be removed and a new
+     * one initialised in its place.
      * @param xCoordinate The X Coordinate the toy should be placed on
      * @param yCoordinate The Y Coordinate the toy should be placed on
      * @param facingDirection The direction the toy should be initially facing
      */
-    public void place(int xCoordinate, int yCoordinate, int facingDirection){
+    public Robot placeRobot(int xCoordinate, int yCoordinate, DirectionEnum facingDirection){
+
+        //remove existing toy robot from table if found.
+
         //initialise new toy at placed coordinate
 
         //add new toy to toys list as it is now on the table
 
+        return null;
     }
 
     /**
@@ -63,7 +70,7 @@ public class Table {
     public void move(Toy toy) {
 
         //validate if the movement will cause an invalid placement.
-        if(isValidMove(toy)){
+        if(isToyOnTable() && isValidMove(toy)){
             //move the toy in its current facing direction
 
         }
@@ -72,14 +79,22 @@ public class Table {
     }
 
     /**
-     * Determine if the the move command of the toy would be a valid move.
+     * Determine if the move command of the toy would be a valid move.
      * An invalid move would be one that results in the toy being moved outside the bounds of the table.
      * @param toy The toy that should be checked if a move command is a valid command
      * @return True if the move command results in a valid move, otherwise false
      */
-    public boolean isValidMove(Toy toy){
+    private boolean isValidMove(Toy toy) {
         //implement validation
 
         return true;
+    }
+
+    /**
+     * Determine if the toy is already only the table.
+     * @return True if the toy is already on the table, otherwise false
+     */
+    public boolean isToyOnTable() {
+        return !currentToysOnTheTable.isEmpty();
     }
 }

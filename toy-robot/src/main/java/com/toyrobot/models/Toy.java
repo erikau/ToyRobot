@@ -1,4 +1,7 @@
-package com.eriktveitnes.toyrobot.models;
+package com.toyrobot.models;
+
+import static com.google.common.base.Preconditions.checkArgument;
+import static com.google.common.base.Preconditions.checkNotNull;
 
 /**
  * The toy is an object that has been placed on a table.
@@ -16,6 +19,8 @@ public class Toy {
     protected int yCoordinate;
 
     public Toy(int xCoordinate, int yCoordinate) {
+        checkArgument(xCoordinate >= 0, "must be positive: %s", xCoordinate);
+        checkArgument(yCoordinate >= 0, "must be positive: %s", yCoordinate);
         this.xCoordinate = xCoordinate;
         this.yCoordinate = yCoordinate;
     }
@@ -24,15 +29,8 @@ public class Toy {
         return xCoordinate;
     }
 
-    public void setxCoordinate(int xCoordinate) {
-        this.xCoordinate = xCoordinate;
-    }
-
     public int getyCoordinate() {
         return yCoordinate;
     }
 
-    public void setyCoordinate(int yCoordinate) {
-        this.yCoordinate = yCoordinate;
-    }
 }
