@@ -33,4 +33,11 @@ public class Toy {
         return yCoordinate;
     }
 
+    public void setCoordinates(int xCoordinate, int yCoordinate){
+        checkArgument(xCoordinate >= 0, "must be positive: %s", xCoordinate);
+        checkArgument(yCoordinate >= 0, "must be positive: %s", yCoordinate);
+        this.xCoordinate = xCoordinate;
+        this.yCoordinate = yCoordinate;
+    }
+
 }

@@ -38,10 +38,14 @@ public class Robot extends Toy {
      * the robots currentFacingDirection set at West(3).
      */
     public void turnLeft(){
-        //change the direction the robot is facing to the left
-        //this will be subtracting by 1 to the facing direction
-        //if the current direction is 0 then it should be + 3
 
+        int direction = currentFacingDirection.ordinal();
+        if(direction == 0){
+            currentFacingDirection = DirectionEnum.fromInt(3);
+        } else{
+            direction = direction - 1;
+            currentFacingDirection = DirectionEnum.fromInt(direction);
+        }
     }
 
     /**
@@ -51,10 +55,13 @@ public class Robot extends Toy {
      * the robots currentFacingDirection set at East(1).
      */
     public void turnRight(){
-        //change the direction the robot is facing to the right
-        //this will be adding by 1 to the facing direction
-        //If the current direction is 3 then it should be -3
-
+        int direction = currentFacingDirection.ordinal();
+        if(direction == 3) {
+            currentFacingDirection = DirectionEnum.fromInt(0);
+        } else{
+            direction = direction + 1;
+            currentFacingDirection = DirectionEnum.fromInt(direction);
+        }
     }
 
 
@@ -63,8 +70,7 @@ public class Robot extends Toy {
      * @return A string in the format XCoordinate,YCoordinate,CurrentFacingDirection
      */
     public String reportLocation(){
-        //TODO use a string formatter
-        return  xCoordinate + "," + yCoordinate + "," + currentFacingDirection;
+        return  String.format("%d,%d,%s", xCoordinate, yCoordinate, currentFacingDirection);
     }
 
 }
