@@ -3,17 +3,19 @@ A simple toy robot simulator that reads inputs from a CSV file and issues the co
     See PROBLEM.md for further details
 
 
-Input file Format:
-    1) Each command must be on a new line in the file
-    2) Commands are case sensitive and must all be in capital
-    3) Place Command must be in the format - 'KEYWORD XCoordinate,YCoordinate,Direction'
+###Input file Format:
+
+    1. Each command must be on a new line in the file
+    2. Commands are case sensitive and must all be in capital
+    3. Place Command must be in the format - 'KEYWORD XCoordinate,YCoordinate,Direction'
         Where Keyword     = PLACE
               XCoordinate = a positive integer along the X axis of the table
               YCoordinate = a positive integer along the Y axis of the table
               Direction   = The Direction must be either NORTH, SOUTH, EAST or WEST
     E.g. PLACE 3,2,WEST
 
-Gradle Tasks:
+###Gradle Tasks:
+
     This project has been built using Gradle. For more information on gradle see: https://gradle.org/
 
     To build the application:
@@ -27,7 +29,8 @@ Gradle Tasks:
     where YOUR_FILE_NAME is the csv file name including extension that you want to run.  E.g. input.csv
 
 
-Existing Samples:
+###Existing Samples:
+
     There are 3 available sample files included with the project.
     To run the first:
         gradle run -PappArgs="['input.csv']"
@@ -61,16 +64,22 @@ Existing Samples:
 
 
 
-Assumptions:
-    1)  Any malformed data in the csv file will be ignored.
-    2)  The Supported commands do not take affect until a robot has been placed on the table.
-    3)  A new Place command will remove the existing robot from the table and create a new robot.
-    4)  Only 1 robot may exist on the table at a given time.
+###Assumptions:
 
-Design Decisions:
+    1.  Any malformed data in the csv file will be ignored.
+    2.  The Supported commands do not take affect until a robot has been placed on the table.
+    3.  A new Place command will remove the existing robot from the table and create a new robot.
+    4.  Only 1 robot may exist on the table at a given time.
+
+###Design Decisions:
+
     This application uses a Command pattern to separate the logic of the CSV parsing to the requests issued to the table/robot.
 
     The table needs to be instantiated first so any created commands can be associated with it.
 
     With future developments the CommandParsing should be cleaned up as the breaking down of the PLACE command from
     a csv file could be done much cleaner.  Also support for command line inputs could be added.
+
+
+Created by:
+    Erik Tveitnes - 05/09/2017
