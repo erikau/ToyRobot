@@ -3,7 +3,7 @@ A simple toy robot simulator that reads inputs from a CSV file and issues the co
     See PROBLEM.md for further details
 
 
-###Input file Format:
+### Input file Format:
 
     1. Each command must be on a new line in the file
     2. Commands are case sensitive and must all be in capital
@@ -14,7 +14,7 @@ A simple toy robot simulator that reads inputs from a CSV file and issues the co
               Direction   = The Direction must be either NORTH, SOUTH, EAST or WEST
     E.g. PLACE 3,2,WEST
 
-###Gradle Tasks:
+### Gradle Tasks:
 
     This project has been built using Gradle. For more information on gradle see: https://gradle.org/
 
@@ -29,7 +29,7 @@ A simple toy robot simulator that reads inputs from a CSV file and issues the co
     where YOUR_FILE_NAME is the csv file name including extension that you want to run.  E.g. input.csv
 
 
-###Existing Samples:
+### Existing Samples:
 
     There are 3 available sample files included with the project.
     To run the first:
@@ -64,14 +64,14 @@ A simple toy robot simulator that reads inputs from a CSV file and issues the co
 
 
 
-###Assumptions:
+### Assumptions:
 
     1.  Any malformed data in the csv file will be ignored.
     2.  The Supported commands do not take affect until a robot has been placed on the table.
     3.  A new Place command will remove the existing robot from the table and create a new robot.
     4.  Only 1 robot may exist on the table at a given time.
 
-###Design Decisions:
+### Design Decisions:
 
     This application uses a Command pattern to separate the logic of the CSV parsing to the requests issued to the table/robot.
 
